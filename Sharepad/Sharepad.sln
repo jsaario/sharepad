@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShareLib", "ShareLib\ShareLib.csproj", "{A7111FAA-4A39-407E-8105-5A28246D22F5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShareCLI", "ShareCLI\ShareCLI.csproj", "{5DED181F-BDEF-42F9-A50F-3E1BCA3235A6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A7111FAA-4A39-407E-8105-5A28246D22F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7111FAA-4A39-407E-8105-5A28246D22F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7111FAA-4A39-407E-8105-5A28246D22F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7111FAA-4A39-407E-8105-5A28246D22F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DED181F-BDEF-42F9-A50F-3E1BCA3235A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DED181F-BDEF-42F9-A50F-3E1BCA3235A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DED181F-BDEF-42F9-A50F-3E1BCA3235A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DED181F-BDEF-42F9-A50F-3E1BCA3235A6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {89EB16D4-1629-4281-B448-9A5B679918BC}
+	EndGlobalSection
+EndGlobal
