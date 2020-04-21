@@ -1,4 +1,5 @@
 ﻿using System;
+using ShareLib;
 
 namespace ShareCLI
 {
@@ -6,7 +7,16 @@ namespace ShareCLI
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Sharepad TestInstance = new Sharepad();
+            Console.WriteLine(TestInstance.CreateID());
+            Console.WriteLine(TestInstance.CreateID());
+            string TextID = TestInstance.CreateText();
+            Console.WriteLine(TextID);
+            /* Console.WriteLine("Please give TextID.");
+            string TextID = Console.ReadLine();
+            Console.WriteLine("Please give TextData.");
+            string TextData = Console.ReadLine();
+            TestInstance.WriteText(TextID, TextData); */
         }
     }
 }
