@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using ShareLib.SharepadData;
@@ -82,6 +81,10 @@ namespace ShareLib
         {
             SharepadContext DatabaseContext = new SharepadContext();
             Text OutText = DatabaseContext.Text.Find(TextID);
+            if (OutText is null)
+            {
+                throw new ArgumentException($"Text with ID '{TextID}' not found.");
+            }
             /* Set the access time and update the database. */
             OutText.AccessTime = DateTime.Now;
             DatabaseContext.Update(OutText);
@@ -94,6 +97,10 @@ namespace ShareLib
         {
             SharepadContext DatabaseContext = new SharepadContext();
             Text UpdateText = DatabaseContext.Text.Find(TextID);
+            if (UpdateText is null)
+            {
+                throw new ArgumentException($"Text with ID '{TextID}' not found.");
+            }
             UpdateText.TextData = TextData;
             UpdateText.AccessTime = DateTime.Now;
             DatabaseContext.Update(UpdateText);
