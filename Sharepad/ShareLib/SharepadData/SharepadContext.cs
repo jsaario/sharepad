@@ -22,7 +22,7 @@ namespace ShareLib.SharepadData
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Server=CASSIA\\SQLExpress;Database=Sharepad;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer("Server=CASSIA\\SQLEXPRESS;Database=Sharepad;Trusted_Connection=True;");
             }
         }
 
@@ -33,16 +33,13 @@ namespace ShareLib.SharepadData
                 entity.Property(e => e.TextId)
                     .HasColumnName("TextID")
                     .HasMaxLength(32)
-                    .IsUnicode(false)
                     .IsFixedLength();
 
                 entity.Property(e => e.AccessTime).HasColumnType("datetime");
 
                 entity.Property(e => e.CreationTime).HasColumnType("datetime");
 
-                entity.Property(e => e.TextData)
-                    .IsRequired()
-                    .HasColumnType("ntext");
+                entity.Property(e => e.TextData).IsRequired();
             });
 
             OnModelCreatingPartial(modelBuilder);

@@ -8,7 +8,7 @@ namespace ShareCLI
         static void Main(string[] args)
         {
             Sharepad TestInstance = new Sharepad(1);
-            Console.WriteLine(DateTime.Now);
+            /* Console.WriteLine(DateTime.Now); */
             TestInstance.CleanDatabase();
 
             /* string TextID = TestInstance.CreateText();

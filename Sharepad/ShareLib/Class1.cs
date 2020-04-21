@@ -6,8 +6,8 @@ using ShareLib.SharepadData;
 
 /* Database initialisation command:
  * CREATE TABLE Text (
- *   TextID char(32) NOT NULL PRIMARY KEY,
- *   TextData ntext NOT NULL,
+ *   TextID nchar(32) NOT NULL PRIMARY KEY,
+ *   TextData nvarchar(max) NOT NULL,
  *   CreationTime Datetime NOT NULL,
  *   AccessTime Datetime NOT NULL
  *   )
@@ -42,7 +42,8 @@ namespace ShareLib
             DateTime ExpirationTime = DateTime.Now - this.TextLifetime;
             DatabaseContext.Text.RemoveRange(
                 from Text in DatabaseContext.Text
-                where Text.AccessTime.CompareTo(ExpirationTime) < 0
+                where Text.AccessTime.CompareTo(ExpirationTime) < 0 ||
+                    Text.TextData.Length == 0
                 select Text
                 );
             DatabaseContext.SaveChanges();
