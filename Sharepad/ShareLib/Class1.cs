@@ -62,7 +62,22 @@ namespace ShareLib
         {
             SharepadContext DatabaseContext = new SharepadContext();
             Text OutText = DatabaseContext.Text.Find(TextID);
+            /* Set the access time and update the database. */
+            OutText.AccessTime = DateTime.Now;
+            DatabaseContext.Update(OutText);
+            DatabaseContext.SaveChanges();
             return OutText.TextData;
+        }
+
+        /* Writes given TextData to the database. */
+        public void WriteText(string TextID, string TextData)
+        {
+            SharepadContext DatabaseContext = new SharepadContext();
+            Text UpdateText = DatabaseContext.Text.Find(TextID);
+            UpdateText.TextData = TextData;
+            UpdateText.AccessTime = DateTime.Now;
+            DatabaseContext.Update(UpdateText);
+            DatabaseContext.SaveChanges();
         }
     }
 }
