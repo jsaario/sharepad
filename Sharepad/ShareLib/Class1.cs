@@ -20,6 +20,7 @@ namespace ShareLib
         private Random RandomGenerator { get; }
         private string Characters { get; }
         private TimeSpan TextLifetime { get; }
+        private int TextIDSize { get; }
 
         /* Constructor. */
         public Sharepad(int LifeTimeInDays)
@@ -30,10 +31,11 @@ namespace ShareLib
             this.Characters = "023456789abcdefghijkmnopqrstuvwxyz";
             /* Lifetime of the Text entries. */
             this.TextLifetime = new TimeSpan(LifeTimeInDays, 0, 0, 0);
+            /* Length of the TextID. */
+            this.TextIDSize = 32;
         }
 
         /* Methods. */
-
         /* Removes old entries from the database. */
         public void CleanDatabase()
         {
@@ -51,13 +53,12 @@ namespace ShareLib
         /* Creates a new TextID. */
         public string CreateID()
         {
-            StringBuilder TextID = new StringBuilder("", 32);
-            for (int i = 0; i < 32; i++)
+            StringBuilder TextID = new StringBuilder("", this.TextIDSize);
+            for (int i = 0; i < this.TextIDSize; i++)
             {
                 int Index = this.RandomGenerator.Next(0, this.Characters.Length);
                 TextID.Append(this.Characters[Index]);
             }
-            /* Todo. Create a list of chars and an RNG. Draw random indices and build a string. */
             return TextID.ToString();
         }
 
