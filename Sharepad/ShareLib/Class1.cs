@@ -56,5 +56,13 @@ namespace ShareLib
             DatabaseContext.SaveChanges();
             return TextID;
         }
+
+        /* Reads a database entry with given TextID. */
+        public string ReadText(string TextID)
+        {
+            SharepadContext DatabaseContext = new SharepadContext();
+            Text OutText = DatabaseContext.Text.Find(TextID);
+            return OutText.TextData;
+        }
     }
 }
