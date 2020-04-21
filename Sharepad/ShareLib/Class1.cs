@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using ShareLib.SharepadData;
 
@@ -18,17 +20,34 @@ namespace ShareLib
         /* Properties. */
         private Random RandomGenerator { get; }
         private string Characters { get; }
+        private TimeSpan TextLifetime { get; }
 
         /* Constructor. */
-        public Sharepad()
+        public Sharepad(int LifeTimeInDays)
         {
             /* This generator is fast but not cryptographically secure. */
             this.RandomGenerator = new Random();
             /* Alphanumeric ASCII character set with "1" and "l" removed. */
             this.Characters = "023456789abcdefghijkmnopqrstuvwxyz";
+            /* Lifetime of the Text entries. */
+            this.TextLifetime = new TimeSpan(LifeTimeInDays, 0, 0, 0);
         }
 
         /* Methods. */
+
+        /* Removes old entries from the database. */
+        public void CleanDatabase()
+        {
+            SharepadContext DatabaseContext = new SharepadContext();
+            DateTime ExpirationTime = DateTime.Now - this.TextLifetime;
+            DatabaseContext.Text.RemoveRange(
+                from Text in DatabaseContext.Text
+                where Text.AccessTime.CompareTo(ExpirationTime) < 0
+                select Text
+                );
+            DatabaseContext.SaveChanges();
+        }
+
         /* Creates a new TextID. */
         public string CreateID()
         {
